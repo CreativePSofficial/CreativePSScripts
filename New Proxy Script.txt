@@ -1,0 +1,3441 @@
+
+
+
+
+
+
+local localAppData = os.getenv("LOCALAPPDATA")
+ITEM_DAT_PATH = localAppData.."/Growtopia/cache/items.dat"
+
+
+--os.remove("cache/items.dat")
+--os.remove(ITEM_DAT_PATH)
+
+
+RemoveCallbacks()
+
+--Auto Trade Bot stuff
+
+ITEM_ID = 242 -- ITEM ID of item to Trade
+ACCEPT_DEAL = 1 -- Amount of Diamond Locks to ACCEPT
+ACCEPT_ID = 1796 -- ID of Diamond Locks (Currency to accept Trade)
+NET_ID = 0 --Other players NET_ID
+
+MyID = math.floor(GetLocal().netid) --DO NOT TOUCH!!!
+
+CurrentTradeID = 0 --DO NOT TOUCH!!!
+CurrentTradeCOUNT = 0 --DO NOT TOUCH!!!
+
+
+SpamText = "Sell 1WL for 1DL #AutoTradeScriptTest" --Text to spam
+Spammer = false --DO NOT TOUCH!!!
+EnableSpam = false --decides if spam will start (true == it will spam. false == it will not :D)
+
+
+
+TradeBotRunning = false
+
+--Auto Trade Bot stuff ends here
+
+  x1 = 0
+  y1 = 0
+  x2 = 0
+  y2 = 0
+  
+  hostx = 0
+  hosty = 0
+  
+  
+  
+  
+  telelocationx = 0 / 32
+  telelocationy = 0 / 32
+  
+  
+  pocket = false
+  
+  
+  
+  wrenchpull = false
+  wrenchkick = false
+  wrenchban = false
+  
+  blinker = false
+  
+  specialblink = false
+  
+  blockteledialog = false
+  
+  faststock = false
+  fastempty = false
+  
+  
+  text = ""
+  spammerxxx = false
+
+  
+  delay = 5000
+
+  gaspullshit = false
+
+
+  --Sb stuff starts here!
+   
+
+
+   
+  
+  
+  troller = false
+
+  autobuydiamondlocks  = false
+
+
+
+  typecol = ""
+
+  local randomnumberino = math.random(1, 9)
+
+
+
+
+  playerID = 45434543264325562
+
+
+  ignorespin = false
+
+
+
+
+
+  realx = 25
+  realy = 24
+  finalbet = 0
+  
+  dlsAUTO = 0
+  wlsAUTO = 0
+  bglsAUTO = 0
+  
+  
+  
+  truewls = 0
+  
+  truedls = 0
+  
+  truebgls = 0
+
+
+
+
+
+
+
+
+lampPOSX = 0
+
+lampPOSY = 0
+
+
+WheelPOSX = 0
+WheelPOSY = 0
+
+
+  local entered = {}
+
+ 
+
+  
+  
+  
+
+
+
+
+  ply1x = 0
+  ply1y = 0
+  ply2x = 0
+  ply2y = 0
+  
+  player1gems = 0
+  
+  player2gems = 0
+
+
+
+
+  nigergem = false
+
+
+  bfgCum = false
+
+  ignoreGems = false
+
+  autoClover = false
+  autoArroz = false
+
+  BlackListBan = false
+
+
+  droppingnigagems = false
+
+
+  stopSB = 40
+  amountSB = 0
+
+  SbRunner = false
+
+  textSB = "438ht4372h8t9h78eqwr978g98ugherwq8gyr9y8gewtrgy98"
+
+  chat = "action|input\ntext|"
+
+
+
+  flagshit = ""
+
+  FlagBan = false
+
+  VendGem = false
+
+  VendX = 0
+  VendY = 0
+
+  WrenchGem = false
+
+
+
+  Webhook = ""
+
+  HookChecker = true
+
+
+
+  AutoCompress = false
+
+  AUTO_SURG_TOGGLE = false
+
+
+
+
+
+  SuperContent = "hello guys. i am ultra mod"
+  SuperBroadCastsDone = 0
+  StartTime = 0
+  StopTime = StartTime + 3600  -- 1 hour from StartTime
+  CurrentTime = os.time()
+  SuperHour = false  -- For example, assuming you want to enable SuperHour
+
+  SB_TIMER = 0
+
+
+LOL = GetLocal()
+
+
+TimeDifference = 0
+
+
+
+
+
+
+local DownloadHWID = "curl --insecure https://raw.githubusercontent.com/CringeLanux/DataBase/main/database"
+
+
+
+  local command1 = "wmic csproduct get uuid"
+  local handle1 = io.popen(command1)
+  local result1 = handle1:read("*a")
+  handle1:close()
+  
+  result1 = string.gsub(result1, "%s+", "") 
+  
+  
+  
+  
+  
+  
+ 
+
+  
+  
+  local handle = io.popen(DownloadHWID)
+  local result = handle:read("*a")
+  handle:close()
+
+
+
+  
+
+  local filenamex = "BlackList.txt"  
+
+local fileA = io.open(filenamex, "r")
+if fileA then
+    
+    fileA:close()
+else
+
+
+    local fileX = io.open("BlackList.txt", "w")
+
+
+    
+    fileX:write("911\n")
+    
+    
+    
+    fileX:close()
+    
+
+
+   
+end
+
+
+
+local WebhookTXT = "CENSORED_Hook.txt"
+
+local HookLoad = io.open(WebhookTXT)
+
+if HookLoad then
+    Webhook = HookLoad:read("*a") -- Use HookLoad instead of WebhookTXT
+    print(Webhook)
+    io.close(HookLoad) -- Close the file object
+else
+    local fileTXT = io.open(WebhookTXT, "w") -- Open the file in write mode
+    if fileTXT then
+        fileTXT:write("Remove this and paste ur webhook here") -- Write to the file
+        io.close(fileTXT) -- Close the file
+    else
+        print("Failed to open or create the file.")
+    end
+end
+
+  
+  
+  
+  
+  
+  
+  local lines = {}
+  for line in result:gmatch("[^\r\n]+") do
+      table.insert(lines, line)
+  end
+  
+  -- Check if a certain word (UUID) exists in the lines
+  local targetWord = result1
+  local cleanedTargetWord = targetWord:gsub("-", "%%-"):lower()  -- Escape hyphens and convert to lowercase
+  
+  local wordFound = false
+  
+  for _, line in ipairs(lines) do
+      local cleanedLine = line:lower()  -- Convert line to lowercase
+      if string.find(cleanedLine, cleanedTargetWord) then
+          wordFound = true
+          
+          break
+      end
+  end
+  
+  if wordFound then
+      
+  else
+      
+  end
+
+
+
+  if wordFound then
+
+
+
+    function moveinsta(x, y, left)
+        pkt = {}
+        pkt.type = 0
+        pkt.int_data = 822
+        pkt.pos_x = x * 32
+        pkt.pos_y = y * 32
+        pkt.pos2_x = x
+        pkt.pos2_y = y
+        if left then
+            pkt.flags = 48
+        else
+            pkt.flags = 3014
+        end
+        SendPacketRaw(pkt)
+    end
+    
+    function pathfinder(x,y)
+        local indexx = 0
+        local indexxnr = 8
+        local path = FindPath(x, y)
+    
+        if CheckPath(x, y ) then
+        
+        for i, v in pairs(path) do
+            indexx = indexx + 1
+            print(indexxnr .. ":" .. indexx)
+            if indexx >= indexxnr or i > #path - indexxnr then
+                if #path > 150 then
+                    Sleep(500)
+                elseif #path > 75 then
+                    Sleep(300)
+                else
+                    Sleep(150)
+                end
+                moveinsta(v.x, v.y, true)
+                indexx = 0
+            end
+        end
+        GetLocal().pos_x = x * 32
+        GetLocal().pos_y = y * 32
+    else
+        return true
+    end
+    
+    end
+
+
+    function FindItem(id)
+
+        SendPacket(2, "action|dialog_return\ndialog_name|item_search\n"..id.."|1")
+        Sleep(100)
+        Collect(id)
+    
+    end
+    
+    function Place(fg, x, y)
+        local packet = {}
+        packet.type = 3
+        packet.int_data = fg
+        packet.int_x = x
+        packet.int_y = y
+        packet.pos_x = x * 32
+        packet.pos_y = y * 32
+        SendPacketRaw(packet)
+    end
+    
+    
+    
+    function CopyWorld()
+    for _,tile in pairs(GetTiles()) do
+        
+        local tileData = {
+            fg = tile.fg,
+            pos_x = tile.pos_x,
+            pos_y = tile.pos_y
+        }
+        table.insert(myTable, tileData)
+    
+        
+    end
+    log("`2Copied world!")
+    end
+    
+    
+    function Paster()
+    for i, tileData in ipairs(myTable) do
+        io.write("Tile ", i, " fg: ", tileData.fg, " pos_x: ", tileData.pos_x, " pos_y: ", tileData.pos_y, "\n")
+        
+        if tileData.fg == 0 or tileData.fg == 8 or tileData.fg == 3760 or tileData == 6  then
+            
+        else if 1 > GetItemCount(tileData.fg) then
+            FindItem(math.floor(tileData.fg))
+            Sleep(1250)
+            pathfinder(tileData.pos_x, tileData.pos_y + 1)
+            Sleep(250)
+            Place(tileData.fg, tileData.pos_x, tileData.pos_y)
+            Sleep(100)
+        else
+    
+        Sleep(50)
+        pathfinder(tileData.pos_x, tileData.pos_y + 1)
+        Sleep(250)
+        Place(tileData.fg, tileData.pos_x, tileData.pos_y)
+        Sleep(100)
+        end
+    end
+    end
+    end
+
+
+
+   
+
+function USETOOL(tool)
+SendPacket(2, "action|dialog_return\ndialog_name|surgery\nbuttonClicked|command_"..tool)
+end
+
+
+
+function cmd(texts)
+
+    print("\27[33m "..texts)
+
+end
+
+function SendLog(sex) 
+
+    local var = {}
+
+    var[0] = "OnConsoleMessage"
+    var[1] = "`c[`8@CENSORED Proxy`c]`0" .. sex
+    var.netid = -1
+    SendVarlist(var)
+
+end
+
+
+    
+  
+  function punch()
+
+
+
+    local packet = {}
+     packet.type = 3
+      packet.int_data = 18
+      packet.int_x = lampPOSX
+      packet.int_y = lampPOSY
+      packet.pos_x = lampPOSX * 32
+      packet.pos_y = lampPOSY * 32
+SendPacketRaw(packet)
+
+
+
+
+  end
+
+
+
+  local function clover()
+
+    local p = GetLocal()
+
+    x = p.pos_x / 32
+    y = p.pos_y / 32
+    
+    
+    local packet = {}
+    packet.type = 3
+    packet.int_data = 528
+    packet.int_x = x
+    packet.int_y = y
+    SendPacketRaw(packet)
+
+    
+
+end
+
+local function Arroz()
+
+    local p = GetLocal()
+
+    x = p.pos_x / 32
+    y = p.pos_y / 32
+    
+    
+    local packet = {}
+    packet.type = 3
+    packet.int_data = 4604
+    packet.int_x = x
+    packet.int_y = y
+    SendPacketRaw(packet)
+
+    
+end
+
+
+  function punchWheel()
+
+
+
+    local packet = {}
+     packet.type = 3
+      packet.int_data = 18
+      packet.int_x = WheelPOSX
+      packet.int_y = WheelPOSY
+      packet.pos_x = WheelPOSX * 32
+      packet.pos_y = WheelPOSY * 32
+SendPacketRaw(packet)
+
+
+
+
+  end
+
+
+
+  function DropDLS(dlscount)
+   
+
+
+  
+    Sleep(400)
+    SendPacket(2, "action|dialog_return\ndialog_name|drop\nitem_drop|1796|\nitem_count|"..dlscount)
+    return true
+end
+
+function DropBGL(bglscount)
+
+Sleep(400)
+SendPacket(2, "action|dialog_return\ndialog_name|drop\nitem_drop|7188|\nitem_count|"..bglscount)
+
+end
+
+function DropWLS(wlscount)
+    
+   
+
+    Sleep(400)
+  SendPacket(2, "action|dialog_return\ndialog_name|drop\nitem_drop|242|\nitem_count|"..wlscount)
+
+       
+    
+    end
+
+ 
+
+
+
+
+
+
+local function GetBGL()
+
+for _, object in pairs(GetObjects()) do
+    if object.id == 7188 then
+        gemx = math.floor(object.pos_x / 32)
+        gemy = math.floor(object.pos_y / 32)
+
+        if gemx == realx and gemy == realy then
+            
+
+            
+                bglsAUTO = object.count
+
+
+                truebgls = math.floor(bglsAUTO)
+                break
+
+
+                
+
+              
+    
+end
+end
+end
+end
+
+--Stuff for dls amount
+local function GetDLS()
+
+for _, object in pairs(GetObjects()) do
+    if object.id == 1796 then
+        gemx = math.floor(object.pos_x / 32)
+        gemy = math.floor(object.pos_y / 32)
+
+        if gemx == realx and gemy == realy then
+            
+
+            
+                dlsAUTO = object.count
+
+
+                truedls = math.floor(dlsAUTO)
+                break
+
+
+                
+               
+    
+end
+end
+end
+end
+
+
+--stuff for wls amount
+local function GetWLS()
+
+for _, object in pairs(GetObjects()) do
+    if object.id == 242 then
+        gemx = math.floor(object.pos_x / 32)
+        gemy = math.floor(object.pos_y / 32)
+
+        if gemx == realx and gemy == realy then
+            
+
+            
+               wlsAUTO = object.count
+
+
+               truewls = math.floor(wlsAUTO)
+                break
+                
+                
+    
+end
+end
+end
+end
+
+
+
+
+
+  function insertBetweenLetters(inputStr, insertChar)
+    local result = ""
+    for i = 1, #inputStr do
+        result = result .. inputStr:sub(i, i)
+        if i < #inputStr then
+            result = result .. insertChar
+        end
+    end
+    return result
+end
+
+
+
+
+
+
+
+
+
+
+
+local function SendSB()
+
+    if SbRunner == true then
+        SendPacket(2, "action|input\ntext|/sb "..textSB)
+    end
+    
+end
+
+
+
+function Announce()
+RunThread(function ()
+
+  Sleep(750)
+   if player1gems > player2gems then
+       SendPacket(2, "action|input\ntext|`2(gems)Gems: "..player1gems.."(`8Winner`2) VS "..player2gems.."(gems)")
+       
+   else if player1gems < player2gems then
+       SendPacket(2, "action|input\ntext|`2(gems)Gems: "..player1gems.." VS "..player2gems.."(`8Winner`2) (gems)")
+       
+   else
+    SendPacket(2, "action|input\ntext|`2(gems)Gems: "..player1gems.." VS "..player2gems.."(gems)")
+       
+   
+   end
+
+   
+
+   end 
+end)
+
+
+
+end
+
+
+  function player1()
+
+      for _,object in pairs(GetObjects()) do
+          if object.id == 112 then
+      
+      gemx = math.floor(object.pos_x / 32)
+      gemy = math.floor(object.pos_y / 32)
+      
+      
+              if gemx == ply1x then
+                  if gemy == ply1y then
+                     
+                      player1gems = math.floor(player1gems + object.count)
+                  end
+      
+                  
+      
+              end
+              
+          end
+  end
+end
+
+
+function player2()
+
+  for _,objectx in pairs(GetObjects()) do
+      if objectx.id == 112 then
+  
+  gemx2 = math.floor(objectx.pos_x / 32)
+  gemy2 = math.floor(objectx.pos_y / 32)
+  
+  
+          if gemx2 == ply2x then
+              if gemy2 == ply2y then
+                 
+                  player2gems = math.floor(player2gems + objectx.count)
+              end
+  
+              
+  
+          end
+          
+      end
+         
+      end
+
+      Announce()
+  end
+
+
+  function SendMessage(text)
+  local var = {} --make table
+  var[0] = "OnTextOverlay"
+  var[1] = text
+  var.netid = -1 --need to put netid or it doesn't work
+  
+  SendVarlist(var)
+  end
+
+
+
+  
+  
+  
+  
+  local function tp(x, y)
+  
+  local tp = {}
+  
+  tp[0] = "OnSetPos"
+  tp[1] = "x:"..x.."y:"..y
+  
+  SendVarlist(tp)
+  
+  
+  end
+
+  function Eater()
+    SendPacket(2,"action|dialog_return\ndialog_name|givexgems\nitem_id|-484|\nitem_count|250\n")
+end
+
+
+  function VendRunner()
+
+    while VendGem do
+        SendPacket(2, "action|dialog_return\ndialog_name|vend_buy\nx|"..VendX.."|\ny|"..VendY.."|\nbuyamount|250")
+        Sleep(100)
+        SendPacket(2, "action|dialog_return\ndialog_name|vend_buyconfirm\nx|"..VendX.."|\ny|"..VendY.."|\nbuyamount|250|")
+        Sleep(100)
+        Eater()
+    end
+
+end
+
+
+
+
+function SayInfo()
+    formattedStopTime = os.date("%H:%M", StopTime)
+    RunThread(function ()
+        Sleep(2000)
+        SendPacket(2, "action|input\ntext|`0[`8@CENSORED (megaphone)`0] end time: "..formattedStopTime)
+        Sleep(2000)
+        SendPacket(2, "action|input\ntext|`2Proxy Script made by `8@CENSORED`0! `2Join the Discord --> `#discord.gg/YuBs5NQ6du")
+    
+        
+    end)
+    
+    
+    end
+
+
+    function spam()
+   
+        while Spammer do
+            SendPacket(2, "action|input\ntext|"..SpamText)
+            Sleep(5000)
+        end
+    
+    end
+    
+    function PutItem()
+        SendPacket(2, "action|dialog_return\ndialog_name|trade\nitem_trade|"..ITEM_ID.."|\nitem_count|1")
+    end
+    
+    function TradeConfirm()
+    SendPacket(2, "action|dialog_return\ndialog_name|trade\nbuttonClicked|confirm_trade")
+    end
+    
+    function TradeAccept()
+    
+        SendPacket(2, "action|trade_accept\nstatus|1\nitem|"..ACCEPT_ID.."|"..ACCEPT_DEAL)
+    
+    end
+  
+  
+ 
+  
+  
+  
+  function hook(varlist, packet)
+      if varlist[0]:find("OnSDBroadcast") then
+          SendMessage("`#Proxy blocked an SDB")
+          return true
+      end
+        end
+  
+  AddCallback("Hookxxx", "OnVarlist", hook)
+  
+  
+  
+  
+  local function blinks()
+  
+      while blinker do 
+  
+  
+  
+  
+  SendPacket(2, "action|setSkin\ncolor|2527912447")
+  Sleep(250)
+  SendPacket(2, "action|setSkin\ncolor|2190853119")
+  Sleep(250)
+  SendPacket(2, "action|setSkin\ncolor|2022356223")
+  Sleep(250)
+  
+  SendPacket(2, "action|setSkin\ncolor|2864971775")
+  
+  
+  
+  
+      end
+  
+  
+  end
+  
+  
+  
+  local function specialblinker()
+  
+      while specialblink do 
+  
+          local rnd = math.random(1, 9999999999)
+  
+  SendPacket(2, "action|setSkin\ncolor|"..rnd)
+  
+  Sleep(100)
+  
+  
+  
+  
+  
+  
+      end
+  
+  
+  end
+  
+
+  local function autobuydls(x, y)
+  
+
+    local ply = GetLocal()
+    while autobuydiamondlocks do 
+
+  if ply.gems > 110000 then
+    SendPacket(2, "action|dialog_return\ndialog_name|telephone\nnum|53785|\nx|"..x.."|\ny|"..y.."|\nbuttonClicked|dlconvert")
+    Sleep(50)
+  else
+    autobuydiamondlocks = false
+
+  end
+        
+
+
+
+
+
+    end
+
+
+end
+  
+  
+  
+  
+  
+  
+  local function spammer()
+  
+      while spammerxxx do
+  
+         
+              SendPacket(2, "action|input\ntext|"..text)
+              Sleep(delay)
+          
+          
+          
+      end
+      
+  end
+  
+  
+  local function CollectBoth()
+  
+      RunThread(function ()
+          SendMessage("`2Collecting bets...")
+     FindPath(x1, y1)
+     Sleep(500)
+     FindPath(x2, y2)
+     Sleep(500)
+     FindPath(hostx, hosty)
+      end)
+  end
+  
+  local function collectOne()
+      RunThread(function ()
+          SendMessage("`2Collecting bets...")
+     FindPath(x1, y1)
+     Sleep(500)
+     FindPath(hostx, hosty)
+     
+  end)
+  end
+  
+  
+  
+  
+  local function DropNigaGems()
+
+    nigergem = true
+
+    while nigergem do 
+       SendPacket(2, "action|dialog_return\ndialog_name|popup\nbuttonClicked|bgem_dropall")
+       Sleep(125)
+    end
+
+  end
+
+
+
+  local function Collect(id)
+    for _, obj in pairs(GetObjects()) do
+        if obj.id == id then
+            local posx = math.abs(GetLocal().pos_x - obj.pos_x)
+            local posy = math.abs(GetLocal().pos_y - obj.pos_y)
+            if posx < 100 and posy < 100 then
+                pkt = {}
+                pkt.type = 11
+                pkt.int_data = obj.oid
+                pkt.pos_x = obj.pos_x
+                pkt.pos_y = obj.pos_y
+                SendPacketRaw(pkt)
+            end
+        end
+    end
+end
+
+
+
+local function Dropper()
+
+
+    SendPacket(2, "action|dialog_return\ndialog_name|popup\nbuttonClicked|bgem_dropall")
+
+
+end
+
+
+
+local function Eater()
+    SendPacket(2,"action|dialog_return\ndialog_name|givexgems\nitem_id|-484|\nitem_count|250\n")
+end
+
+
+
+  
+  local function LocateTele()
+  
+      for _,tile in pairs(GetTiles()) do
+          if tile.fg == 3898 then
+              
+              telelocationx = tile.pos_x
+              telelocationy = tile.pos_y
+              
+          end
+  
+          
+      end
+  
+  
+  end
+
+
+
+  function DLtoBGL()
+
+    blockteledialog = true
+            
+    LocateTele()
+    realtelex = telelocationx
+    realteley = telelocationy
+    
+    SendPacket(2, "action|dialog_return\ndialog_name|telephone\nnum|53785|\nx|"..realtelex.."|\ny|"..realteley.."|\nbuttonClicked|bglconvert")
+
+end
+
+
+  local function LocateTeleV2()
+  
+    for _,tile in pairs(GetTiles()) do
+        if tile.fg == 3898 then
+            
+            telelocationx = tile.pos_x
+            telelocationy = tile.pos_y
+
+local ply = GetLocal()
+            
+    while autobuydiamondlocks do 
+
+  if ply.gems > 110000 then
+    SendPacket(2, "action|dialog_return\ndialog_name|telephone\nnum|53785|\nx|"..telelocationx.."|\ny|"..telelocationy.."|\nbuttonClicked|dlconvert")
+    Sleep(20)
+  else
+    autobuydiamondlocks = false
+
+  end
+            Sleep(15)
+        end
+
+        
+    end
+
+
+end
+end
+
+
+function Startbfg()
+    SendPacket(2, "action|dialog_return\ndialog_name|cheats\ncheck_autofarm|1\ncheck_bfg|1\ncheck_autospam|0\ncheck_autopull|0\ncheck_autoplace|0\ncheck_antibounce|0\ncheck_modfly|0\ncheck_speed|0\ncheck_gravity|0\ncheck_lonely|0\ncheck_fastdrop|0\ncheck_gems|0\ncheck_ignoreo|0")
+
+end
+
+function Startbfggem()
+    SendPacket(2, "action|dialog_return\ndialog_name|cheats\ncheck_autofarm|1\ncheck_bfg|1\ncheck_autospam|0\ncheck_autopull|0\ncheck_autoplace|0\ncheck_antibounce|0\ncheck_modfly|0\ncheck_speed|0\ncheck_gravity|0\ncheck_lonely|0\ncheck_fastdrop|0\ncheck_gems|1\ncheck_ignoreo|0")
+
+end
+
+
+function stopbfg()
+    SendPacket(2, "action|dialog_return\ndialog_name|cheats\ncheck_autofarm|0\ncheck_bfg|0\ncheck_autospam|0\ncheck_autopull|0\ncheck_autoplace|0\ncheck_antibounce|0\ncheck_modfly|0\ncheck_speed|0\ncheck_gravity|0\ncheck_lonely|0\ncheck_fastdrop|0\ncheck_gems|0\ncheck_ignoreo|0")
+
+end
+
+
+function bfgstarter()
+    if ignoreGems == true then
+        Startbfggem()
+    else if ignoreGems == false then
+        Startbfg()
+
+    end
+end
+end
+
+
+FreeGemsLOL = false
+
+function GemEatersAuto()
+FreeGemsLOL = true
+droppingnigagems = true
+while FreeGemsLOL do
+    
+    
+    Dropper()
+    Sleep(75)
+    Collect(14112)
+    Sleep(75)
+    Eater()
+    Sleep(75)
+    
+    
+
+end
+
+
+end
+
+
+
+
+local valueHook = "Gem count: "..math.floor(GetLocal().gems)
+local valueHook2 = "Current world: "..GetLocal().world
+
+
+formattedTime = os.date("%Y-%m-%d %H:%M:%S", StopTime)
+
+function DataHook()
+-- Construct the JSON data as a Lua string
+local jsonData = [[
+{
+  "embeds": [
+    {
+      "title": "CENSORED Proxy WebHooks",
+      "description": "Greatest Creative-PS Proxy",
+      "color": 16705372,
+      "fields": [
+        {
+            "name": ":robot:Player",
+            "value": "]] .. "Player name: ".. GetLocal().name .. [["
+          },
+        {
+          "name": ":earth_americas:Current world",
+          "value": "]] .. "Current world: ".. GetLocal().world .. [["
+        },
+        {
+          "name": ":gem:Gems left",
+          "value": "]] .. "Gems left: ".. math.floor(GetLocal().gems) .. [["
+        },
+        {
+            "name": ":mega:Superbroadcast",
+            "value": "]] .. "Stop time: ".. formattedStopTime .. [["
+          }
+      ]
+    }
+  ]
+}
+]]
+
+-- Save the JSON data to a temporary file
+local tempFile = io.open("temp.json", "w")
+tempFile:write(jsonData)
+tempFile:close()
+
+-- Define the webhook URL
+local webhookUrl = Webhook
+
+-- Define the curl command with the temporary file
+local command = 'curl -X POST -H "Content-Type: application/json" --data @"temp.json" ' .. webhookUrl
+
+-- Execute the curl command
+local success, exitCode, exitSignal = os.execute(command)
+
+-- Check for errors
+if success then
+    print("Embed sent successfully.")
+else
+    print("Failed to send embed. Exit Code:", exitCode, "Exit Signal:", exitSignal)
+end
+
+-- Clean up the temporary file
+os.remove("temp.json")
+end
+
+
+
+  
+  
+  function hooks(type, packet)
+      if packet:find("text|[^}]*%/proxy$") then
+              
+        local dialogs = [[
+add_label_with_icon|big|`#Proxy commands :)|left|1794|
+add_spacer|small|
+add_spacer|small|
+add_spacer|small|
+add_label_with_icon|small|`6Script fully made by `8@CENSORED|left|482|
+add_spacer|large|
+add_button|DiscordClick|`2Join `8@CENSORED`2 Discord|noflags|0|0|
+add_spacer|small|
+add_label_with_icon|small|`5Auto Surgery:|left|4296|
+add_label_with_icon|small|`2/autosurg `rToggles Autosurg (ON/OFF)|left|482|
+add_label_with_icon|small|`#if you have autosurg toggles ON. It will block every dialog...|left|1432|
+add_spacer|small|
+add_label_with_icon|small|`5Bank commands:|left|1898|
+add_label_with_icon|small|`2/wd (amount) `rWithdraw from bank!|left|482|
+add_label_with_icon|small|`2/depo (amount) `rDeposit to bank!|left|482|
+add_spacer|small|
+add_label_with_icon|small|`5Lock commands:|left|242|
+add_label_with_icon|small|`2/cv `rConverts 100BGLS to 1Black gem lock|left|482|
+add_label_with_icon|small|`2/dc `rDeconvert 1Black gem lock to 100BGL|left|482|
+add_label_with_icon|small|`2/autocompress `rAutomaticly converts all locks to the biggest when u collect!|left|482|
+add_spacer|small|
+add_label_with_icon|small|`5Drop commands:|left|1460|
+add_label_with_icon|small|`2/wl (amount) `rDrops specific amount of WLS|left|482|
+add_label_with_icon|small|`2/dd (amount) `rDrops specific amount of DLS|left|482|
+add_label_with_icon|small|`2/bd (amount) `rDrops specific amount of BGLS|left|482|
+add_label_with_icon|small|`2/bg (amount) `rDrops specific amount of Black gem locks|left|482|
+add_label_with_icon|small|`2/dropall `rDrops all items from inventory!|left|482|
+add_label_with_icon|small|`2/daw `rDrops all WLS, DLS & BGLS|left|482|
+add_spacer|small|
+add_label_with_icon|small|`5Telephone commands:|left|3898|
+add_label_with_icon|small|`2/convert `rConverts 100DLS to 1BGL|left|482|
+add_label_with_icon|small|`2/mega `rAuto buys Megaphone from Telephone|left|482|
+add_label_with_icon|small|`2/buydls `rBuys DLS from Tele until u run out of gems|left|482|
+add_spacer|small|
+add_label_with_icon|small|`5Hosting commands:|left|758|
+add_label_with_icon|small|`2/pos1 `rSelects player1 Position|left|482|
+add_label_with_icon|small|`2/pos2 `rSelects player2 Position|left|482|
+add_label_with_icon|small|`2/tp `rCollects bets. (If u set only ply1 pos it will collect it.)|left|482|
+add_label_with_icon|small|`2/w1 `rTeleports to Player 1|left|482|
+add_label_with_icon|small|`2/w2 `rTeleports to Player 2|left|482|
+add_label_with_icon|small|`2/reset `rResets both room positions to 0, 0|left|482|
+add_label_with_icon|small|`2/gaspull `rPull players when he says "gas"|left|482|
+add_label_with_icon|small|`2/resetplayer `rSet player to 0 (NetID)|left|482|
+add_label_with_icon|small|`2/ignorespin `rIgnores every other spin than your players (NetID)|left|482|
+add_label_with_icon|small|`#Use `p/wp`# or `p/gaspull`# to set Player (NetID)|left|1432|
+add_spacer|small|
+add_label_with_icon|small|`5Advanced Hosting:|left|758|
+add_label_with_icon|small|`2/setdisplay `rSets position on room. (Do this when ur standing on Display)|left|482|
+add_label_with_icon|small|`2/r1 `rPathFinds to the Display|left|482|
+add_label_with_icon|small|`2/pdrop `rAutomaticly calculates the bet and drops it to player|left|482|
+add_label_with_icon|small|`2/3x `rSame as /pdrop but makes the bet 3X|left|482|
+add_label_with_icon|small|`#You must have set /setdisplay to display. Otherwise script wont work!|left|1432|
+add_spacer|small|
+add_label_with_icon|small|`5BTK Commands:|left|528|
+add_label_with_icon|small|`2/btk1 `rSets position where gems will be! (Player 1)|left|482|
+add_label_with_icon|small|`2/btk2 `rSets position where gems will be! (Player 2)|left|482|
+add_label_with_icon|small|`2/check `rCounts gems & tell the winner!|left|482|
+add_spacer|small|
+add_label_with_icon|small|`5Wrench commands:|left|32|
+add_label_with_icon|small|`2/wp `rWrench Pull. `#(This is used to set PLAYER for /ignorespin)|left|482|
+add_label_with_icon|small|`2/wk `rWrench Kick.|left|482|
+add_label_with_icon|small|`2/wb `rWrench BAN.|left|482|
+add_spacer|small|
+add_label_with_icon|small|`5Spam commands:|left|2580|
+add_label_with_icon|small|`2/spam `rStarts spam..|left|482|
+add_label_with_icon|small|`2/delay (Number) `rSets delay for spam (Example. 1000 = 1sec)|left|482|
+add_label_with_icon|small|`2/text (Spam text) `rSets text for spamming.|left|482|
+add_spacer|small|
+add_label_with_icon|small|`5Superbroadcast commands:|left|2480|
+add_label_with_icon|small|`2/super `rStarts Auto SB|left|482|
+add_label_with_icon|small|`2/content (SB Text) `rSets text for SBS|left|482|
+add_label_with_icon|small|`2/sbtime (Number) `rSets time for SBS|left|482|
+add_label_with_icon|small|`#For /sbtime (num). 3600 = 1hour. 1800 = 30min :)|left|1432|
+add_spacer|small|
+add_label_with_icon|small|`5Automatic Trade Bot|left|7190|
+add_label_with_icon|small|`2/tradetoggle `rStarts & stops Trade Bot|left|482|
+add_label_with_icon|small|`2/setcurrency (wl / dl / bgl / ireng) `rSets currency|left|482|
+add_label_with_icon|small|`2/tradeprice (amount) `rThis sets price for the item.|left|482|
+add_label_with_icon|small|`2/sellitem (ITEM_ID) `rItem that ur selling.|left|482|
+add_spacer|small|
+add_label_with_icon|small|`5BlackList commands:|left|408|
+add_label_with_icon|small|`2/add (UserID) `rAdds UserID to Blacklist|left|482|
+add_label_with_icon|small|`2/blacklist `rEnables / Disables BlackList Ban.|left|482|
+add_spacer|small|
+add_label_with_icon|small|`5Flag Black list commands:|left|1626|
+add_label_with_icon|small|`2/flag (flagid) `rFlagID with to ban|left|482|
+add_label_with_icon|small|`2/flagban `rEnables / Disables flag Ban.|left|482|
+add_label_with_icon|small|`2/flaglist `rOpens Website where all the ID's are listed|left|482|
+add_spacer|small|
+add_label_with_icon|small|`5Visual commands:|left|290|
+add_label_with_icon|small|`2/name (smth) `rChanges ur name (Visual)|left|482|
+add_label_with_icon|small|`2/shittycolor `rChanges your skin color to shadow (Not visual)|left|482|
+add_label_with_icon|small|`2/dark `rChanges your skin color to DARK (Not visual)|left|482|
+add_label_with_icon|small|`2/blink `rStarts chaning skin color|left|482|
+add_label_with_icon|small|`2/special `rStarts chaning skin color (Random colors)|left|482|
+add_label_with_icon|small|`2/skin (Number) `rChanges skin color|left|482|
+add_spacer|small|
+add_label_with_icon|small|`5BFG & Farming features:|left|5638|
+add_label_with_icon|small|`2/startbfg `rEnables Autofarm & bfg mode from cheats|left|482|
+add_label_with_icon|small|`2/stopbfg `rDisables Autofarm & bfg mode from cheats|left|482|
+add_label_with_icon|small|`2/autoclover `rAutomaticly uses Clovers once u run out|left|482|
+add_label_with_icon|small|`2/autoarroz `rAutomaticly uses Arroz once u run out|left|482|
+add_label_with_icon|small|`2/gemignore `rEnables "Dont drop gems" (works while using /startbfg)|left|482|
+add_spacer|small|
+add_label_with_icon|small|`5Copy & pasting world:|left|8192|
+add_label_with_icon|small|`2/copy `rCopies every foreground in a world|left|482|
+add_label_with_icon|small|`2/paste `rStarts building the world you copied|left|482|
+add_label_with_icon|small|`#this will use /find for free ones. (paid blocks will be left empty)|left|1432|
+add_spacer|small|
+add_label_with_icon|small|`5Vending features:|left|2978|
+add_label_with_icon|small|`2/fe `rFast empty vend|left|482|
+add_label_with_icon|small|`2/fa `rFast add stock to vend|left|482|
+add_spacer|small|
+add_label_with_icon|small|`5Webhook options:|left|4246|
+add_label_with_icon|small|`2/sethook `rOpens the txt where u need to paste your hook|left|482|
+add_label_with_icon|small|`2/hooktoggle `rsend webhooks while SBING (ON / OFF)|left|482|
+add_label_with_icon|small|`#Paste Webhook fully & after that SAVE the file|left|1432|
+add_spacer|small|
+add_label_with_icon|small|`5Black Gem features:|left|14112|
+add_label_with_icon|small|`2/autoeat `rAuto drop & eat bgems|left|482|
+add_label_with_icon|small|`2/dropblack `rDrops all blackgems.|left|482|
+add_label_with_icon|small|`2/vendgem `rWrench on a vend with bgems. it will auto buy & eat|left|482|
+add_spacer|small|
+add_label_with_icon|small|`5Other features:|left|11550|
+add_label_with_icon|small|`2/modal `rSays your BGL count. (This is shown to others)|left|482|
+add_label_with_icon|small|`2/relog `rExists world & re enters. (Also pathfinds to same pos)|left|482|
+add_label_with_icon|small|`2/worlds `rCreates a txt and writes ur recent worlds to it. (GT Folder)|left|482|
+add_label_with_icon|small|`2/type (lett / number) `rAutomaticly colors what you say.|left|482|
+add_spacer|small|
+add_label_with_icon|small|`5Passive features:|left|2480|
+add_label_with_icon|small|`rAuto block SDB|left|482|
+add_label_with_icon|small|`rFast roulette + REAL Check|left|482|
+add_label_with_icon|small|`rBlocks every RCE connection packet!|left|482|
+add_spacer|small|
+add_button|chc0|`2Alright``|noflags|0|0|
+end_dialog|popup|||
+                        ]]
+
+        local dialog = {}
+        dialog[0] = "OnDialogRequest"
+        dialog[1] = dialogs
+        dialog.netid = -1
+
+        SendVarlist(dialog)
+
+        return true
+    end
+
+
+
+
+    if packet:find("/copy") then
+        table.remove(myTable)
+          CopyWorld()
+		return true
+    end
+
+     if packet:find("/paste") then
+        RunThread(function ()
+            Paster()
+        end)
+        
+        return true
+    end
+
+
+
+
+    if packet:find("/autosurg") then
+        
+        if AUTO_SURG_TOGGLE == false then
+            AUTO_SURG_TOGGLE = true
+            SendMessage("`cAuto Surgery `2ENABLED")
+        else
+          AUTO_SURG_TOGGLE = false
+          SendMessage("`cAuto Surgery `4DISABLED")
+        end
+
+        return true
+    end
+
+
+
+    if packet:find("/autocompress") then
+
+        if AutoCompress == false then
+            AutoCompress = true
+            SendMessage("`2Auto Compress ENABLED")
+        else
+            AutoCompress = false
+            SendMessage("`4Auto Compress DISABLED")
+        end
+        
+        return true
+    end
+
+
+
+    if packet:find("/hooktoggle") then
+        
+        if HookChecker == true then
+            HookChecker = false
+            SendMessage("`4Script will not send webhooks")
+        else
+              HookChecker = true
+              SendMessage("`2Script will send hook when u SB. `4(ONLY WHEN USING AUTO SB)")
+
+        end
+    end
+
+
+    if packet:find("/sethook") then
+       os.execute("start CENSORED_Hook.txt")
+
+        return true
+    end
+
+    if packet:find("/tradetoggle") then
+        
+        if TradeBotRunning == false then
+            TradeBotRunning = true
+            SendMessage("`2Trade Bot is running... Waiting for someone to trade you")
+        else
+
+            TradeBotRunning = false
+            SendMessage("`4Trade Bot stopped!")
+        end
+        return true
+    end
+
+
+    if packet:find("/setcurrency") then
+        currency = packet:match("/setcurrency%s+(%w+)")
+    
+        if currency == "wl" then
+            ACCEPT_ID = 242
+            SendMessage("Currency = World Lock")
+        elseif currency == "dl" then
+            ACCEPT_ID = 1796
+            SendMessage("Currency = Diamond Lock")
+        elseif currency == "bgl" then
+            ACCEPT_ID = 7188
+            SendMessage("Currency = Blue Gem Lock")
+        elseif currency == "ireng" then
+            ACCEPT_ID = 11550
+            SendMessage("Currency = Ireng")
+      
+        return true
+    end
+    
+
+    end
+     if packet:find("/tradeprice") then
+        local amount_TRADE = tonumber(packet:match("/tradeprice%s+(%d+)"))
+
+        ACCEPT_DEAL = amount_TRADE
+
+        itemSex = (GetIteminfo(ITEM_ID).name)
+
+        TRADE_CURRENCY = (GetIteminfo(ACCEPT_ID).name)
+        
+        tempprice = (GetIteminfo(ACCEPT_ID).name)
+        SendMessage("i will now sell "..itemSex.." for "..tostring(ACCEPT_DEAL)..currency)
+
+
+        return true
+     end
+
+
+    if packet:find("/sellitem") then
+
+        local amount = tonumber(packet:match("/sellitem%s+(%d+)"))
+
+        ITEM_ID = amount
+
+        itemSex = (GetIteminfo(ITEM_ID).name)
+        SendMessage("U will sell: `9"..itemSex)
+        
+        return true
+    end
+
+
+    if packet:find("/autoarroz") then
+        
+        if autoArroz == false then
+            
+            autoArroz = true
+            SendMessage("`2U will now use Arroz when old one runs out")
+        else
+            autoArroz = false
+            SendMessage("`4Auto Arroz DISABLED")
+        end
+
+        return true
+    end
+
+    if packet:find("/vendgem") then
+        
+        if WrenchGem == false then
+            SendMessage("`2U can now wrench on a vend with bgems")
+            WrenchGem = true
+
+        else
+            WrenchGem = false
+             SendMessage("`4U can now wrench vends normally")
+        end
+
+        return true
+    end
+
+    if packet:find("/flaglist") then
+         
+      os.execute("start https://github.com/CringeLanux/Growtopia-Flag-IDS")
+
+        return true
+    end
+
+    if packet:find("/flagban") then
+         
+        if FlagBan == false then
+            FlagBan = true
+            SendMessage("`2Flag Ban enables! U will ban peoples with `4'"..FlagShitty.."'`2 flag")
+        else
+            FlagBan = false
+        end
+
+        return true
+    end
+    if packet:find("/flag") then
+        FlagShitty = packet:match("/flag%s+(.*)")
+
+        flagshit = FlagShitty
+        log(FlagShitty)
+        
+        return true
+    end
+
+
+    
+
+   if packet:find("/sbtime") then
+   TIME_COMMAND = tonumber(packet:match("/sbtime%s+(.*)"))
+
+         SB_TIMER = TIME_COMMAND
+         SendMessage("Time: "..SB_TIMER)
+
+    return true
+   end
+    if packet:find("/content") then
+        local kontolNiga = packet:match("/content%s+(.*)")
+        SuperContent = kontolNiga
+        SendMessage("Content: " .. SuperContent)
+        return true
+    end
+
+    if packet:find("/super") then
+        if SuperHour == false then
+            SuperHour = true
+            StartTime = os.time()
+            StopTime = StartTime + SB_TIMER
+             SendPacket(2, "action|input\ntext|/sb " .. SuperContent)
+        else
+            SuperHour = false
+            SendMessage("`4Auto SB stopped")
+        end
+        return true
+    end
+
+
+
+    if packet:find("text|[^}]*%/autoeat$") then
+        
+       if FreeGemsLOL == false then
+        RunThread(function ()
+            GemEatersAuto()
+        end)
+        
+       else
+            
+        FreeGemsLOL = false
+        droppingnigagems = false
+
+       end
+
+        return true
+    end
+
+    if packet:find("text|[^}]*%/blacklist$") then
+        
+if BlackListBan == false then
+    BlackListBan = true
+    SendMessage("BlackList is now `2ENABLED")
+else
+    BlackListBan = false
+    SendMessage("BlackList is now `4DISABLED")
+end
+   return true
+    end
+
+    if packet:find("/add") then
+        BlackListName = tonumber(packet:match("/add%s+(.*)"))
+
+   
+local file = io.open("BlackList.txt", "a")
+
+if file then
+    -- Write data to the file
+    file:write(BlackListName.."\n")
+    file:close()
+    
+    
+    
+    log("`2Succesfuly added name `4"..BlackListName.."`2 to blacklist...")
+else
+    log("Failed to write to a file")
+end
+
+
+
+
+
+        return true
+    end
+
+    if packet:find("text|[^}]*%/gemignore$") then
+
+        if ignoreGems == false then
+            ignoreGems = true
+            SendMessage("`2U will now automaticly pickup gems when u turn on bfg mode")
+        else
+            SendMessage("`4u wont auto pickup gems when bfg")
+            ignoreGems = false
+        end
+        
+        return true
+    end
+
+
+    if packet:find("text|[^}]*%/startbfg$") then
+        
+        
+        bfgstarter()
+    
+    
+   
+      
+         return true
+    end
+
+    if packet:find("text|[^}]*%/stopbfg$") then
+        stopbfg()
+        return true
+    end
+
+
+    if packet:find("text|[^}]*%/autoclover$") then
+        
+        if autoClover == false then
+            autoClover = true
+            SendMessage("`2U will now automaticly use Clovers")
+            clover()
+            return true
+        else
+             autoClover = false
+             return true
+        end
+        
+    end
+
+
+
+
+    if packet:find("text|[^}]*%/setdisplay$") then
+
+
+        local me = GetLocal()
+        x = math.floor(me.pos_x / 32)
+        y = math.floor(me.pos_y / 32)
+
+        realx = x
+        realy = y
+        SendMessage("`2Player room set to current pos")
+        return true
+    end
+
+    if packet:find("/setlamp") then
+
+
+        local me = GetLocal()
+        x = math.floor(me.pos_x / 32)
+        y = math.floor(me.pos_y / 32)
+
+        lampPOSX = x
+        lampPOSY = y
+        SendMessage("`2Lamp set to current pos")
+        return true
+    end
+
+    if packet:find("/setwheel") then
+
+
+        local me = GetLocal()
+        x = math.floor(me.pos_x / 32)
+        y = math.floor(me.pos_y / 32)
+
+        WheelPOSX = x
+        WheelPOSY = y
+        SendMessage("`2Wheel set to current pos")
+        return true
+    end
+
+
+    if packet:find("/go") then
+        
+               RunThread(function ()
+                punch()
+       Sleep(100)
+                punchWheel()
+               end)
+        
+      
+
+
+        return true
+    end
+
+
+
+    
+    if packet:find("text|[^}]*%/r1$") then
+        FindPath(realx, realy)
+        return true
+    end
+
+    if packet:find("text|[^}]*%/pdrop$") then
+
+       
+
+
+        RunThread(function ()
+            GetDLS()
+            GetWLS()
+            GetBGL()
+
+            Sleep(250)
+
+            FindPath(realx, realy)
+
+            
+
+            truedls = truedls + truedls
+            
+            truewls = truewls + truewls
+            
+            truebgls = truebgls + truebgls
+           
+            
+
+            
+            Sleep(250)
+
+
+            if truewls > 0 then
+                
+                DropWLS(truewls)
+            end
+                
+            if truedls > 0 then
+                
+                DropDLS(truedls)
+            end
+            if truebgls > 0 then
+                
+            DropBGL(truebgls)
+            end
+                
+                
+            
+            
+
+            --Resetting all INTS
+            Sleep(1500)
+            truewls = 0
+            truedls = 0
+            gamedls = 0
+            gamewls = 0
+            gamebgls = 0
+            wlsAUTO = 0
+            dlsAUTO = 0
+            bglsAUTO = 0
+
+            
+       
+
+        end)
+        
+        return true
+    end
+
+    if packet:find("text|[^}]*%/3x$") then
+        RunThread(function ()
+            GetDLS()
+            GetWLS()
+            GetBGL()
+            Sleep(250)
+            FindPath(realx, realy)
+
+            Sleep(400)
+
+            gamedls = truedls + truedls + truedls
+            gamewls = truewls + truewls + truewls
+            gamebgls = truebgls + truebgls + truebgls
+           
+            Sleep(250)
+
+
+            if gamewls > 0 then
+                
+                DropWLS(gamewls)
+            end
+                
+            if gamedls > 0 then
+                
+                DropDLS(gamedls)
+            end
+            if gamebgls > 0 then
+                
+            DropBGL(gamebgls)
+            end
+  
+
+                Sleep(1500)
+                truewls = 0
+                truedls = 0
+                truebgls = 0
+                gamedls = 0
+                gamewls = 0
+                gamebgls = 0
+                wlsAUTO = 0
+                dlsAUTO = 0
+                bglsAUTO = 0
+
+                
+
+        end)
+        
+        return true
+    end
+
+
+
+
+
+
+    if packet:find("text|[^}]*%/resetplayer$") then
+        
+        playerID = 0
+
+        return true
+    end
+
+
+    if packet:find("text|[^}]*%/ignorespin$") then
+        if ignorespin == false then
+            ignorespin = true
+            SendMessage("U will now only see spins from your own player!")
+        else
+
+                ignorespin = false
+                SendMessage("U will see everyones spin")
+        end
+        return true
+    end
+
+
+ 
+
+
+
+    if packet:find("text|[^}]*%/gaspull$") then
+        
+
+        if gaspullshit == false then
+            gaspullshit = true
+            SendMessage("Gas pull `2ENABLED")
+        else
+
+            gaspullshit = false
+            SendMessage("Gas pull `4DISABLED")
+        end
+
+        return true
+    end
+
+    if packet:find("text|[^}]*%/btk1$") then
+
+        local me = GetLocal()
+
+
+        x = math.floor(me.pos_x / 32)
+        y = math.floor(me.pos_y / 32)
+
+        ply1x = x
+        ply1y = y
+
+        log(ply1x)
+
+
+SendPacket(2, "action|input\ntext|`#Position 1 set!")
+
+return true
+    end
+
+    if packet:find("text|[^}]*%/btk2$") then
+        local nig = GetLocal()
+
+        x2 = math.floor(nig.pos_x / 32)
+        y2 = math.floor(nig.pos_y / 32)
+
+        ply2x = x2
+        ply2y = y2
+        SendPacket(2, "action|input\ntext|`#Position 2 set!")
+        return true
+
+    end
+    
+
+
+
+    if packet:find("text|[^}]*%/check$") then
+
+
+        player1gems = 0
+        player2gems = 0
+
+
+              player1()
+              player2()
+
+            return true
+    end
+
+
+
+  
+  
+      
+    if packet:find("text|[^}]*%/pos1$") then
+          local player1 = GetLocal()
+        
+          x1 = player1.pos_x / 32
+          y1 = player1.pos_y / 32
+    
+            SendMessage("`cPlayer 1 X: "..x1.."\nPlayer 1 Y: "..y1)
+            return true
+      end
+  
+      if packet:find("text|[^}]*%/pos2$") then
+          local player2 = GetLocal()
+        
+          x2 = player2.pos_x / 32
+          y2 = player2.pos_y / 32
+    
+            SendMessage("`cPlayer 2 X: "..x2.."\nPlayer 2 Y: "..y2)
+            return true
+      end
+  
+      if packet:find("text|[^}]*%/w1$") then
+          SendMessage("`9PathFinding to Player 1")
+      FindPath(x1, y1)
+      return true
+      end
+      if packet:find("text|[^}]*%/w2$") then
+          
+      SendMessage("`9PathFinding to Player 2")
+      FindPath(x2, y2)
+      return true
+      end
+      if packet:find("text|[^}]*%/wp$") then
+          
+          if wrenchpull == false then
+              SendMessage("`cWrench pull `2ENABLED")
+              wrenchpull = true
+          else
+              SendMessage("`cWrench pull `4DISABLED")
+          wrenchpull = false
+          
+          end
+          return true
+          end
+  
+          if packet:find("text|[^}]*%/wk$") then
+          
+              if wrenchkick == false then
+                  SendMessage("`cWrench kick `2ENABLED")
+                  wrenchkick = true
+              else
+                  SendMessage("`cWrench kick `4DISABLED")
+              wrenchkick = false
+              
+              end
+              return true
+              end
+  
+              if packet:find("text|[^}]*%/wb$") then
+          
+                  if wrenchban == false then
+                      SendMessage("`cWrench `4BAN `2ENABLED")
+                      wrenchban = true
+                  else
+                      SendMessage("`cWrench `4BAN `4DISABLED")
+                  wrenchban = false
+                  
+                  end
+                  return true
+                  end
+      
+  
+        
+                  if packet:find("text|[^}]*%/convert$") then
+  
+              blockteledialog = true
+            
+              LocateTele()
+              realtelex = telelocationx
+              realteley = telelocationy
+              
+              SendPacket(2, "action|dialog_return\ndialog_name|telephone\nnum|53785|\nx|"..realtelex.."|\ny|"..realteley.."|\nbuttonClicked|bglconvert")
+  
+              
+             
+              RunThread(function()
+                  Sleep(2000)
+                  blockteledialog = false
+              end)
+             return true
+             
+             
+              
+          end
+
+
+          if packet:find("text|[^}]*%/buydls$") then
+            LocateTele()
+            realtelex = telelocationx
+            realteley = telelocationy
+
+            autobuydiamondlocks = true 
+
+            RunThread(function ()
+                LocateTeleV2()
+            end)
+
+
+
+            return true
+          end
+  
+  
+        
+  
+          if packet:find("text|[^}]*%/dc$") then
+              
+                SendPacket(2, "action|dialog_return\ndialog_name|info_box\nbuttonClicked|make_bluegl")
+              return true
+          end
+          if packet:find("text|[^}]*%/cv$") then
+              
+              SendPacket(2, "action|dialog_return\ndialog_name|info_box\nbuttonClicked|make_bgl")
+            return true
+        end
+  
+        if packet:find("text|[^}]*%/mega$") then
+              LocateTele()
+              realtelex = telelocationx
+              realteley = telelocationy
+              
+              SendPacket(2, "action|dialog_return\ndialog_name|telephone\nnum|53785|\nx|"..realtelex.."|\ny|"..realteley.."|\nbuttonClicked|megaconvert")
+              return true
+          end
+  
+          if packet:find("/depo") then
+              local amount = tonumber(packet:match("/depo%s+(%d+)"))
+              SendPacket(2, "action|dialog_return\ndialog_name|bank_deposit\nbgl_count|"..amount)
+              return true
+          end
+          if packet:find("text|[^}]*%/dal$") then
+              
+                      local bgls = GetItemCount(7188)
+                      
+                 SendPacket(2, "action|dialog_return\ndialog_name|bank_deposit\nbgl_count|"..bgls)
+              return true
+          end
+  
+           if packet:find("/wd") then 
+              local amount = tonumber(packet:match("/wd%s+(%d+)"))
+             SendPacket(2, "action|dialog_return\ndialog_name|bank_withdraw\nbgl_count|"..amount)
+             return true
+           end
+  
+         if packet:find("/dd") then
+          local amount = tonumber(packet:match("/dd%s+(%d+)"))
+  
+  
+          dls = GetItemCount(1796)
+               --SendPacket(2, "action|drop\n|itemID|1796")
+  
+               if amount > dls then
+                  local packet = {}
+                   packet.type = 10 
+                   packet.int_data = 7188 -- Clothing ID (Jeans)
+                   SendPacketRaw(packet)
+                   dls = GetItemCount(1796)
+  
+                   if amount > dls then
+                      local packet = {}
+                   packet.type = 10 
+                   packet.int_data = 7188 -- Clothing ID (Jeans)
+                   SendPacketRaw(packet)
+                   SendPacket(2, "action|dialog_return\ndialog_name|drop\nitem_drop|1796|\nitem_count|"..amount)
+                   else
+                      SendPacket(2, "action|dialog_return\ndialog_name|drop\nitem_drop|1796|\nitem_count|"..amount)
+  
+                   end
+                   SendPacket(2, "action|dialog_return\ndialog_name|drop\nitem_drop|1796|\nitem_count|"..amount)
+               else
+                  SendPacket(2, "action|dialog_return\ndialog_name|drop\nitem_drop|1796|\nitem_count|"..amount)
+               end
+               
+               return true
+  
+         end
+  
+         if packet:find("/bd") then
+          local amount = tonumber(packet:match("/bd%s+(%d+)"))
+  
+           bgls = GetItemCount(7188)
+  
+  
+           if amount > bgls then
+              SendMessage("`4U dont have enough bgls :(")
+           else
+              SendPacket(2, "action|dialog_return\ndialog_name|drop\nitem_drop|7188|\nitem_count|"..amount)
+           end
+            
+               
+               return true
+  
+         end
+         if packet:find("/bg") then
+          local amount = tonumber(packet:match("/bg%s+(%d+)"))
+  
+               --SendPacket(2, "action|drop\n|itemID|1796")
+               SendPacket(2, "action|dialog_return\ndialog_name|drop\nitem_drop|11550|\nitem_count|"..amount)
+               return true
+  
+         end
+         if packet:find("/wl") then
+          local amount = tonumber(packet:match("/wl%s+(%d+)"))
+  
+          wl = GetItemCount(242)
+  
+          if amount > wl then
+              local packet = {}
+                   packet.type = 10 
+                   packet.int_data = 1796 
+                   SendPacketRaw(packet)
+                   if amount > wl then
+                      packet.type = 10 
+                   packet.int_data = 1796 
+                   SendPacketRaw(packet)
+                   SendPacket(2, "action|dialog_return\ndialog_name|drop\nitem_drop|242|\nitem_count|"..amount)
+                   else
+                      SendPacket(2, "action|dialog_return\ndialog_name|drop\nitem_drop|242|\nitem_count|"..amount)
+                   end
+  
+          else
+              SendPacket(2, "action|dialog_return\ndialog_name|drop\nitem_drop|242|\nitem_count|"..amount)
+          end
+  
+               --SendPacket(2, "action|drop\n|itemID|1796")
+               
+               return true
+  
+         end
+
+
+        
+  
+  
+         if packet:find("text|[^}]*%/daw$") then
+          
+         dl = GetItemCount(1796)
+         wl = GetItemCount(242)
+         bgl = GetItemCount(7188)
+         
+  
+         RunThread(function()
+          SendPacket(2, "action|dialog_return\ndialog_name|drop\nitem_drop|242|\nitem_count|"..wl)
+          Sleep(100)
+          SendPacket(2, "action|dialog_return\ndialog_name|drop\nitem_drop|1796|\nitem_count|"..dl)
+          Sleep(100)
+          SendPacket(2, "action|dialog_return\ndialog_name|drop\nitem_drop|7188|\nitem_count|"..bgl)
+      end)
+  
+  
+  
+          return true
+         end
+  
+  
+  
+ 
+  
+         if packet:find("text|[^}]*%/dropblack$") then
+            
+            if nigergem == false then
+                RunThread(function ()
+                    DropNigaGems()
+                end)
+                
+            else
+                nigergem = false
+
+            end
+          end
+  
+          if packet:find("text|[^}]*%/pocketban$") then
+              
+              
+              if pocket == false then
+                  pocket = true
+                  SendMessage("`cPocket ban `2ENABLED")
+              else
+                  pocket = false
+                  SendMessage("`cPocket ban `4DISABLED")
+              end
+  
+              return true
+          end
+          
+            
+  
+          
+  
+  
+  
+          if packet:find("text|[^}]*%/modal$") then
+          dls = GetItemCount(1796)
+         
+  
+          bgl = GetItemCount(7188)
+          blackgem = GetItemCount(11550)
+  
+          realbgls = blackgem * 100
+  
+          modal = bgl + realbgls
+  
+          realmodal = math.floor(modal)
+  
+          SendPacket(2, "action|input\ntext|`1My modal is: `b"..realmodal.."BGL")
+          
+          return true
+          
+         end
+  
+  
+         if packet:find("text|[^}]*%/shittycolor$") then
+            SendPacket(2, "action|setSkin\ncolor|1")
+            return true
+         end
+         if packet:find("text|[^}]*%/dark$") then
+          SendPacket(2, "action|setSkin\ncolor|1000")
+          return true
+       end
+  
+  
+  
+       if packet:find("/skin") then
+          local amount = tonumber(packet:match("/skin%s+(%d+)"))
+  
+          SendPacket(2, "action|setSkin\ncolor|"..amount)
+               
+               return true
+  
+         end
+  
+         if packet:find("text|[^}]*%/blink$") then
+          
+                  if blinker == false then
+                      blinker = true
+                      SendMessage("`#Blinking mode `2ENABLED")
+                      RunThread(function()
+                      blinks()
+                      end)
+                  else
+                      blinker = false
+                      SendMessage("`#Blinking mode `4DISABLED")
+                  end
+  
+                  return true
+         end
+  
+         if packet:find("text|[^}]*%/special$") then
+          
+          if specialblink == false then
+              specialblink = true
+              SendMessage("`#Special blinking mode `2ENABLED")
+              RunThread(function()
+              specialblinker()
+              end)
+          else
+              specialblink = false
+              SendMessage("`#Special blinking mode `4DISABLED")
+          end
+  
+          return true
+  end 
+  
+  
+  
+  
+        
+  
+  
+  
+  
+      
+       
+         
+   
+  
+  
+         
+  if packet:find("text|[^}]*%/fa$") then
+      
+  if faststock == false then
+      SendMessage("`#Fast stock `2ENABLED")
+  faststock = true
+  else
+  
+      faststock = false
+      SendMessage("`#Fast stock `4DISABLED")
+  
+  
+  
+  end
+  return true
+  end
+  
+  
+  
+  if packet:find("text|[^}]*%/fe$") then
+      
+      if fastempty == false then
+          SendMessage("`#Fast empty `2ENABLED")
+      fastempty = true
+      else
+      
+          fastempty = false
+          SendMessage("`#Fast empty `4DISABLED")
+      
+      
+      
+      
+      return true
+      end
+  end
+  
+  
+  if packet:find("/text") then
+      text = packet:match("/text%s+(.*)")
+  
+      SendMessage("`ctext set to: `2"..text)
+  
+      return true
+  end
+
+
+ 
+
+
+
+
+  
+  
+  
+  if packet:find("text|[^}]*%/dropall$") then
+      
+        RunThread(function ()
+  
+          for _,cur in pairs(GetInventory()) do
+  
+  
+              SendPacket(2, "action|dialog_return\ndialog_name|drop\nitem_drop|"..cur.id.."|\nitem_count|"..cur.count)
+              Sleep(25)
+          end
+          
+        end)
+  
+  
+  
+      return true
+  end
+  
+  
+  if packet:find("text|[^}]*%/spam$") then
+      
+  
+      if spammerxxx == false then
+          spammerxxx = true
+          RunThread(function ()
+              spammer()
+          end)
+          
+      else
+  
+          spammerxxx = false
+      end
+      
+      return true
+  end
+  
+  
+  if packet:find("/delay") then
+      delay = tonumber(packet:match("/delay%s+(%d+)"))
+  
+      SendMessage("`cDelay set to: `2"..delay)
+      return true
+  end
+  
+  
+  
+  if packet:find("text|[^}]*%/relog$") then
+      
+      local p = GetLocal()
+  
+      xxxx = p.pos_x / 32
+      yyyy = p.pos_y / 32
+  
+      curworld = p.world
+  
+      SendPacket(3, "action|join_request\nname|exit\ninvitedWorld|0")
+     
+  
+      
+  
+  
+      RunThread(function ()
+          Sleep(1500)
+          SendPacket(3, "action|join_request\nname|"..curworld.."\ninvitedWorld|0")
+          Sleep(500)
+          FindPath(xxxx, yyyy)
+      end)
+  
+  
+      
+  
+  
+  
+  
+  
+      return true
+  end
+
+
+
+  if packet:find("text|[^}]*%/afk$") then
+    me = GetLocal()
+SendPacket(2, "action|input\ntext|/nick "..me.name.."[AFK]")
+
+
+    return true
+  end
+  
+  
+
+  if packet:find("/type") then
+    local typekebab = packet:match("/type%s+(%S+)")
+         
+    typecol = typekebab
+            return true
+            end
+
+
+  
+ 
+  
+  if packet:find("/name") then
+      local text = packet:match("/name%s+(%S+)")
+              local Player = GetLocal()
+              Player.name = "`4Dr."..Player.name.."``"
+              return true
+              end
+          
+  
+      
+  
+  
+             
+  
+  
+              if packet:find("text|[^}]*%/worlds$") then
+                
+
+                local file = io.open("RecentWorlds.txt", "w")
+
+
+                for i, value in ipairs(entered) do
+                    log(value, value)
+
+      
+                    file:write(value.."\n")
+
+
+                  
+                end
+
+
+                file:close()
+        
+                return true
+             
+                
+
+            end
+         
+  
+            if packet:find("text|[^}]*%/reset$") then
+              x1 = 0
+              x2 = 0
+              y1 = 0
+              y2 = 0
+              SendMessage("`2Room positions resetted!")
+              return true
+          end
+  
+          if packet:find("text|[^}]*%/tp$") then
+             local me = GetLocal()
+  
+  
+             hostx = me.pos_x / 32
+             hosty = me.pos_y / 32
+  
+               if x2 == 0 then
+                  collectOne()
+               else
+                  CollectBoth()
+               end
+  
+  
+          return true
+      end
+  
+         
+  
+  
+  end
+  
+  
+  AddCallback("Hooks", "OnPacket", hooks)
+  
+  
+  function hook(type, packet)
+
+    if packet:find("action|dialog_return\ndialog_name|popup\nbuttonClicked|DiscordClick") then
+        os.execute("start https://discord.gg/YuBs5NQ6du")
+    end
+
+
+    if packet:find("action|input\n|text|") then
+        if typecol == "" then
+
+
+
+
+
+        else
+ local neeker = packet:match("|text|([^|\n]+)")
+
+
+        if neeker:find("/") then
+            
+            return false
+        else
+
+            SendPacket(2, "action|input\n|text|`"..typecol..neeker)
+            return true
+        end
+        end
+       
+        
+        
+
+    end
+
+    if packet:find("action|join_request") then
+        local worldassniga = packet:match("name|([^|\n]+)")
+
+       
+       
+        table.insert(entered, worldassniga)
+
+    end
+    
+  if packet:find("action|wrench") then
+          --SendMessage("`2Packet found!")
+          local netID = tonumber(packet:match("|netid|(%d+)"))
+          if wrenchpull == true then 
+         
+           playerID = netID
+           
+           SendPacket(2, "action|dialog_return\ndialog_name|popup\nnetID|"..netID.."|\nbuttonClicked|pull")
+           
+          else if wrenchkick == true then
+              SendPacket(2, "action|dialog_return\ndialog_name|popup\nnetID|"..netID.."|\nbuttonClicked|kick")
+          else if wrenchban == true then
+              SendPacket(2, "action|dialog_return\ndialog_name|popup\nnetID|"..netID.."|\nbuttonClicked|world_ban")
+          else
+              return false
+          
+          end
+          
+      end
+          
+          end
+          return true
+      end
+  end
+  AddCallback("Wrench", "OnPacket", hook)
+
+
+  
+  
+  
+function GasPuller(varlist, packet)
+   
+	if varlist[0]:find("OnTalkBubble") then
+
+         if varlist[2]:find("gas") then
+
+            local KontolMyAss = varlist[1]
+            if gaspullshit == true then
+                playerID = KontolMyAss
+                SendPacket(2, "action|dialog_return\ndialog_name|popup\nnetID|"..KontolMyAss.."|\nbuttonClicked|pull")
+                
+            else
+
+
+            end
+            
+         end
+
+		
+	end
+end
+
+AddCallback("GasPull", "OnVarlist", GasPuller)
+
+function ExitDetect(varlist, packet) --Detect if player left and if did resets PlayerID
+
+    
+
+    if varlist[0]:find("OnRemove") then
+        
+        if varlist[1]:find(playerID) then
+            --SendPacket(2, "action|input\ntext|`4Player left the world! Resetting PlayerID")
+            SendMessage("`4Player left.")
+            playerID = 0
+            
+        end
+    end
+
+	
+end
+
+AddCallback("ExitDetect", "OnVarlist", ExitDetect)
+
+local owner = GetLocal()
+
+
+local ownerNETID = owner.netid
+  
+  function hook1(varlist, packet)
+
+    
+
+
+
+      if varlist[0]:find("OnTalkBubble") then
+          
+
+        
+            if varlist[2]:find("spun the wheel and got") then
+                if ignorespin == true then
+                if varlist[1] == playerID then
+
+                    
+    
+                else if varlist[1] == ownerNETID then
+
+                    log("You are spinning")
+                    
+                else
+                    
+                    return true
+                end
+            end
+    
+               
+                
+                
+              end
+      
+        end
+
+        if varlist[0]:find("OnTalkBubble") then
+
+
+            if varlist[2]:find("at slots") then
+          if packet.int_data > 1 then
+            local shit = {}
+            shit[0] = "OnTalkBubble"
+            shit[1] = varlist[1]
+            shit[2] = "`2[REAL]`0 "..varlist[2]
+            shit.netid = -1
+            
+            SendVarlist(shit)
+            return true
+          
+          else
+            local shit = {}
+            shit[0] = "OnTalkBubble"
+            shit[1] = varlist[1]
+            shit[2] = "`4[FAKE]`0"..varlist[2]
+            shit.netid = -1
+
+        
+    
+          end
+                
+            end
+          
+          if varlist[2]:find("spun the wheel and got") then
+                
+    
+             
+                local var = {}
+    if packet.int_data > 1 then
+        
+        var[0] = "OnTalkBubble"
+        var[1] = varlist[1]
+    
+    
+      
+        
+    
+        
+    
+        if varlist[2]:find("spun the wheel and got `20``!") then
+          var[2] = "[`8R`#E`4A`eL `c3X`0]"..varlist[2]
+        else if varlist[2]:find("spun the wheel and got `419``!") then
+              var[2] = "[`8R`#E`4A`eL `c3X`0]"..varlist[2]
+          else if varlist[2]:find("spun the wheel and got `b28``!") then
+              var[2] = "[`8R`#E`4A`eL `c3X`0]"..varlist[2]
+          
+        
+        
+        else
+          var[2] = "[`2REAL`0]"..varlist[2]
+        end
+      end
+    end
+    
+        
+        var.netid = -1
+        SendVarlist(var)
+        return true
+    else
+       
+        var[0] = "OnTalkBubble"
+        var[1] = varlist[1]
+        var[2] = "[`4FAKE`0]"..varlist[2]
+        var.netid = -1
+        SendVarlist(var)
+         
+       
+    
+        
+        return true
+    end
+    end
+    end
+
+
+         
+  
+          
+      end
+      if pocket == true then
+      if varlist[2]:find("MWAHAHAHA!! FIRE FIRE FIRE") then
+          
+              SendMessage("`4Someone used Pocket lighter")
+          SendPacket(2, "action|dialog_return\ndialog_name|popup\nnetID|"..tonumber(varlist[1]).."|\nbuttonClicked|world_ban")
+          else
+  
+          end
+          
+      
+
+       
+
+    end
+      
+  end
+  
+  AddCallback("Wheel", "OnVarlist", hook1)
+
+
+
+
+
+
+ 
+  
+  
+  
+  function AutoLuckLOL(varlist, packet)
+	if varlist[0]:find("OnConsoleMessage") then
+
+        if varlist[1]:find("Your luck has worn off") then
+            log("Clover packet detected")
+            if autoClover == true then
+                RunThread(function ()
+                    stopbfg()
+                    Sleep(500)
+                    clover()
+                    Sleep(500)
+                    bfgstarter()
+                    
+                end)
+             end
+
+            else if varlist[1]:find("Your stomach") then
+                if autoArroz == true then
+                    RunThread(function ()
+                        stopbfg()
+                        Sleep(500)
+                        Arroz()
+                        Sleep(500)
+                        bfgstarter()
+                    end)
+                end
+             end
+
+          
+            
+
+        end
+
+		
+	end
+end
+
+AddCallback("hookxs", "OnVarlist", AutoLuckLOL)
+
+
+
+  
+
+
+
+
+
+ 
+  
+  
+  
+  
+  
+  function hookxxx(varlist, packet)
+      if varlist[0]:find("OnDialogRequest") then
+  
+          if varlist[1]:find("end_dialog|telephone|Hang Up") then
+              if blockteledialog == true then
+                  return true
+              end
+          end
+  
+              if varlist[1]:find("end_dialog|vend_edit|Cancel|Update|") then
+                  
+                  local x = varlist[1]:match("embed_data|x|(%d+)")
+                  local y = varlist[1]:match("embed_data|y|(%d+)")
+                  
+  
+                  if faststock == true then
+                      SendPacket(2, "action|dialog_return\ndialog_name|vend_edit\nx|"..x.."|\ny|"..y.."|\nbuttonClicked|addstock")
+                      return true
+                  end
+                  
+              end
+  
+              if varlist[1]:find("end_dialog|vend_edit|Cancel|Update|") then
+                  
+                  local x = varlist[1]:match("embed_data|x|(%d+)")
+                  local y = varlist[1]:match("embed_data|y|(%d+)")
+                  
+  
+                  if fastempty == true then
+                      SendPacket(2, "action|dialog_return\ndialog_name|vend_edit\nx|"..x.."|\ny|"..y.."|\nbuttonClicked|pullstock")
+                      return true
+                  end
+                  
+              end
+
+              if varlist[1]:find("The Black Backpack") then
+                
+                if droppingnigagems == true then
+                   return true
+              else
+                     
+              end
+  
+  
+              
+          
+          end
+        end
+    end
+
+    AddCallback("Hook", "OnVarlist", hookxxx)
+
+
+
+    function huur(varlist, packet)
+        if varlist[0]:find("OnConsoleMessage") then
+            if varlist[1]:find("You can annoy with broadcasts again") then
+                local TimeDifference = StopTime - CurrentTime
+                if TimeDifference > 0 and SuperHour then
+                    SuperBroadCastsDone = SuperBroadCastsDone + 1
+                    SendPacket(2, "action|input\ntext|/sb " .. SuperContent)
+                    SayInfo()
+                end
+            end
+    
+            if varlist[1]:find(SuperContent) then
+                local TimeDifference = StopTime - CurrentTime
+                if TimeDifference > 0 and SuperHour then
+                    SendPacket(2, "action|input\ntext|/sb " .. SuperContent)
+
+                    if Webhook ~= "Remove this and paste ur webhook here" or Webhook ~= " " then
+                        if HookChecker == true then
+                        RunThread(function ()
+                            DataHook()
+                        end)
+                    end
+                        
+                    end
+                end
+            end
+        end
+    end
+    
+    AddCallback("sbstuff", "OnVarlist", huur)
+
+  
+  
+  
+  
+
+
+
+
+  function BlackBan(varlist, packet)
+	if varlist[0]:find("OnSpawn") then
+		local UserID = varlist[1]:match("userID|(%d+)")
+        local NetID = varlist[1]:match("netID|(%d+)")
+        local FlagEnter = varlist[1]:match("country|([a-z]+)|maxLevel|donor")
+
+
+        if FlagEnter == flagshit then
+            
+            SendPacket(2, "action|dialog_return\ndialog_name|popup\nnetID|"..NetID.."|\nbuttonClicked|world_ban")
+        end
+        
+
+        local file = io.open("BlackList.txt", "r")
+
+
+        local names = {}  
+
+
+         for line in file:lines() do
+           table.insert(names, line)
+        end
+
+        file:close()
+
+
+        for _, name in ipairs(names) do
+            
+            if UserID == name then
+                if BlackListBan == true then
+                    SendPacket(2, "action|dialog_return\ndialog_name|popup\nnetID|"..NetID.."|\nbuttonClicked|world_ban")
+                end
+                
+            end
+             
+
+        end
+
+
+	end
+end
+
+AddCallback("HookBlackList", "OnVarlist", BlackBan)
+
+
+function VendSexxx(varlist, packet)
+	if varlist[0]:find("OnDialogRequest") then
+        if varlist[1]:find("This machine contains a total of") then
+            if WrenchGem == true then
+                local me = GetLocal()
+
+                VendX = math.floor(me.pos_x / 32)
+                VendY = math.floor(me.pos_y / 32)
+              RunThread(function ()
+                  SendPacket(2, "action|dialog_return\ndialog_name|vend_buy\nx|"..VendX.."|\ny|"..VendY.."|\nbuyamount|250")
+                  Sleep(250)
+                  SendPacket(2, "action|dialog_return\ndialog_name|vend_buyconfirm\nx|"..VendX.."|\ny|"..VendY.."|\nbuyamount|250|")
+  
+                  VendGem = true
+                  VendRunner()
+              end)
+              return true
+            
+            end
+          
+        end
+        if varlist[1]:find("add_label_with_icon|big|`wPurchase Confirmation````|left|1366|") then
+        
+           if WrenchGem == true then
+            return true
+           end
+            
+
+        end
+		
+	end
+end
+
+AddCallback("VendSex", "OnVarlist", VendSexxx)
+
+
+function ConsoleShit(varlist, packet)
+	if varlist[0]:find("OnConsoleMessage") then
+        if varlist[1]:find("You don't have this many") then
+            VendGem = false
+        end
+		
+	end
+end
+
+AddCallback("Console", "OnVarlist", ConsoleShit)
+
+
+
+
+
+function DialogConfirm(varlist, packet)
+	if varlist[0]:find("OnDialogRequest") then
+		if varlist[1]:find("`wTrade Confirmation") then
+            if TradeBotRunning == true then
+                TradeConfirm()
+                return true
+            end
+            
+        end
+	end
+end
+
+AddCallback("DialogConfirm", "OnVarlist", DialogConfirm)
+
+function TradeConsole(varlist, packet)
+    if varlist[0]:find("OnConsoleMessage") then
+
+        
+        if varlist[1]:find("TRADE ALERT") then
+            if TradeBotRunning == true then
+                TradePacket = varlist[1]:match("`w/trade%s+(.*)")
+                if TradePacket then
+                    output = TradePacket:gsub("`w", ""):gsub("`%d+", ""):gsub("`", ""):gsub("@", ""):gsub("[BOOST]", ""):gsub("of Legend", "")
+                    
+                    
+                    
+   
+        SendPacket(2, "action|input\ntext|/trade "..output)
+
+        PutItem()
+       
+            end
+           
+                 
+
+                 
+
+               
+            end
+        end
+    end
+end
+
+AddCallback("HookEventName", "OnVarlist", TradeConsole)
+
+
+
+function TradeStatus(varlist)
+    if varlist[0]:find("OnTradeStatus") then
+        if TradeBotRunning == true then
+        if varlist[4]:find("add_slot") then
+            if varlist[1] == MyID then
+                log("This is my own ID")
+            else
+                local itemId, itemCount = varlist[4]:match("add_slot|(%d+)|(%d+)")
+                if itemId and itemCount then
+                    log("ITEM ID: " .. itemId)
+                    log("Item Count: " .. itemCount)
+                    
+                    CurrentTradeID = tonumber(itemId) -- Convert to number
+                    CurrentTradeCOUNT = tonumber(itemCount) -- Convert to number
+
+                    if CurrentTradeCOUNT == ACCEPT_DEAL and CurrentTradeID == ACCEPT_ID then
+                       TradeAccept()
+                    end
+                end
+            end
+        end
+    end
+end
+end
+
+AddCallback("TradeStatus", "OnVarlist", TradeStatus)
+
+
+
+
+function NETID(type, packet)
+	
+        if packet:find("action|trade_started") then
+            
+            nutID = packet:match("action|trade_started\nnetid|(%d+)")
+            
+
+            NET_ID = nutID
+
+        end
+
+
+end
+
+AddCallback("NetIDxxx", "OnPacket", NETID)
+
+
+
+
+
+
+
+
+function AutoCompressor(varlist, packet)
+	if varlist[0]:find("OnConsoleMessage") then
+
+        if AutoCompress == true then
+           if varlist[1]:find("Diamond Lock") then
+           
+            RunThread(function ()
+                if GetItemCount(1796) > 100 then
+                    DLtoBGL()
+                    Sleep(50)
+                    if GetItemCount(1796) > 100 then
+                        DLtoBGL()
+                    end
+                end
+            end)
+          
+       
+           
+
+                     
+
+
+           else if varlist[1]:find("World Lock") then
+
+                     if GetItemCount(242) > 100 then 
+
+                        local packet = {}
+                         packet.type = 10 
+                         packet.int_data = 242
+                         SendPacketRaw(packet)
+                         if GetItemCount(242) > 100 then
+                            local packet = {}
+                            packet.type = 10 
+                            packet.int_data = 242
+                            SendPacketRaw(packet)
+                         end
+
+                     end
+
+
+           else if varlist[1]:find("Blue Gem Lock") then
+
+            if GetItemCount(7188) > 100 then
+                
+                SendPacket(2, "action|dialog_return\ndialog_name|info_box\nbuttonClicked|make_bgl")
+                if GetItemCount(7188) > 100 then
+                    SendPacket(2, "action|dialog_return\ndialog_name|info_box\nbuttonClicked|make_bgl")
+                end
+
+
+            end
+           
+
+           end
+
+        end
+    end
+end
+		
+	end
+end
+
+AddCallback("AutoCompressor", "OnVarlist", AutoCompressor)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function AutoSurg(varlist, packet)
+	if varlist[0]:find("OnDialogRequest") then
+        if AUTO_SURG_TOGGLE == true then
+        if varlist[1]:find("Status: `4Awake") then
+            startTime = os.time()
+        USETOOL(2)
+        --cmd("Using anestetic")
+        return true
+        elseif varlist[1]:find("`6It is becoming hard to see your work") then
+            USETOOL(0)
+            --cmd("Using sponge")
+            return true
+        elseif varlist[1]:find("`4You can't see what you are doing") then
+            USETOOL(0)
+            --cmd("using sponge")
+            return true
+        elseif varlist[1]:find("`4Unsanitary") then
+            USETOOL(3)
+            --cmd("Using antiseptic (Unsanitary)")
+            return true
+        elseif varlist[1]:find("Patient is losing blood `4very quickly") then
+            USETOOL(6)
+            --cmd("Using stitches (very quiclky)")
+            return true
+        elseif varlist[1]:find("Patient is `6losing blood") then
+            USETOOL(6)
+            --cmd("using stitches")
+            return true
+        elseif varlist[1]:find("Patient is losing blood `3slowly") then
+            USETOOL(6)
+            --cmd("Using stitches")
+            return true
+        elseif varlist[1]:find("Operation site: `3Not sanitized") then
+            USETOOL(3)
+            --cmd("using antisepcti")
+            return true
+        elseif varlist[1]:find("Operation site: `6Unclean") then
+            USETOOL(3)
+            --cmd("using antiseptic")
+            return true
+        elseif varlist[1]:find("1296") then
+            USETOOL(7)
+            --cmd("Using fix it")
+            return true
+        elseif varlist[1]:find("Patient's fever is `3slowly rising") then
+            USETOOL(4)
+            --cmd("Using antibiotics.")
+            return true
+        elseif varlist[1]:find("Patient's fever is `6climbing") then
+             USETOOL(4)
+            --cmd("Using antibiotics")
+            return true
+        elseif varlist[1]:find("Incisions: `3") then
+         USETOOL(1)
+         --cmd("using scalpel")
+         return true
+        elseif varlist[1]:find("Incisions: `4") then
+            USETOOL(1)
+            --cmd("using scalpel")
+            return true
+         else
+            --cmd(varlist[1])
+            return true
+         end
+        end
+      end
+end
+
+
+AddCallback("AutoSurg", "OnVarlist", AutoSurg)
+
+function DialogShitter(varlist, packet)
+	if varlist[0]:find("OnDialogRequest") then
+        if AUTO_SURG_TOGGLE == true then
+		return true
+        end
+	end
+end
+
+AddCallback("BlockDialogs", "OnVarlist", DialogShitter)
+
+
+function SurgeryHelpers(varlist, packet)
+	if varlist[0]:find("OnConsoleMessage") then
+        if AUTO_SURG_TOGGLE == true then
+        if varlist[1]:find("You are not allowed to perform surgery for a while") then
+            
+            SendPacket(2, "action|input\ntext|/modage 5000")
+
+        end
+		return true
+    end
+	end
+end
+
+AddCallback("SurgHelper", "OnVarlist", SurgeryHelpers)
+
+function SurgFinish(varlist, packet)
+	if varlist[0]:find("OnTalkBubble") then
+if AUTO_SURG_TOGGLE == true then
+        if varlist[2]:find("Hey, somebody left") or varlist[2]:find("The patient's parents are so glad you saved their child") or varlist[2]:find("After a surgery like that") or varlist[2]:find("The Growtopian Hippocratic Society has awarded you") then
+            
+            stopTime = os.time()
+            local elapsedTime = stopTime - startTime
+            SendPacket(2, "action|input\ntext|`c[`8@CENSORED Autosurg`c]`2 You have completed a surgery! Time it took: " .. elapsedTime .. " seconds")
+            os.execute("cls")
+
+            
+        
+        end
+    end
+
+		
+	end
+end
+
+AddCallback("SurgFinisher", "OnVarlist", SurgFinish)
+
+
+
+
+function QuickStart(type, packet)
+	if packet:find("action|wrench") then
+
+        if AUTO_SURG_TOGGLE == true then
+        local netID = tonumber(packet:match("|netid|(%d+)"))
+        SendPacket(2, "action|dialog_return\ndialog_name|popup\nnetID|"..netID.."|\nbuttonClicked|surgery")
+		return true
+        end
+	end
+end
+
+AddCallback("ProSurg", "OnPacket", QuickStart)
+
+
+local var = {}
+var[0] = "OnAddNotification"
+var[1] = "interface/large/game_on.rttex"
+var[2] = "`#Proxy script made by `8@CENSORED"
+var[3] = "audio/lala_theme.wav"
+var.netid = -1
+SendVarlist(var)
+SendPacket(2, "action|input\ntext|Proxy script made by `8@CENSORED")
+else
+end
+
+
+
+
+
